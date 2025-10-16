@@ -20,4 +20,8 @@ Pramudya Danish Ersyandi 134 (2024D)
 Zaldi Putra Pradani 119 (2024D)
 Janatul Fitri 108 108(2024D)
 
-## 
+## RepositoryGithub
+https://github.com/Pramudya12-hub/Journey-Merapi 
+
+## Link website 
+https://pramudya12-hub.github.io/Journey-Merapi/
