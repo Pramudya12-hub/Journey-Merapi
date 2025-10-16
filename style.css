@@ -1,0 +1,867 @@
+/* Reset dasar */
+* {
+    margin: 0; /*menghapus margin default*/
+    padding: 0; /*menghapus padding default*/
+    box-sizing: border-box; /*memastikan padding dan border masuk dalam ukuran elemen*/
+}
+
+/* Gaya umum */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* font utama*/
+    background-color: #f5f5f5; /* Light Mode: Abu muda */ 
+    color: #222; /* Light Mode: Teks gelap */
+    transition: background-color 0.4s, color 0.4s; /*transisi halus untuk perubahan warna*/
+}
+
+/* ================= NAVBAR & HEADER ================= */
+.header {
+    display: flex; 
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 60px;
+    background-color: #86B0BD; 
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    transition: background-color 0.4s;
+}
+
+.Logo {
+    color: white;
+    font-size: 1.6em; 
+    text-decoration: none;
+    font-weight: 700; 
+}
+
+.Logo span {
+    color: #cf2323; /* Merah untuk span */
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 35px;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.navbar a:hover,
+.navbar a.active {
+    color: #552a0d; /* Hover & Active Light Mode */
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* ================= ACTION BUTTONS ================= */
+
+/* Tombol Dark Mode*/
+.mode-toggle-btn {
+    background-color: #d32f2f; /* Light Mode */
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 8px 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-weight: 500;
+}
+
+.mode-toggle-btn:hover {
+    background-color: #a12323;;
+}
+
+/* Tombol login*/
+.login-btn {
+    background-color: #d32f2f;
+    color: white;
+    border: none;
+    padding: 8px 18px;
+    font-size: 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.login-btn:hover {
+    background-color: #a12323;
+}
+
+/* Tombol logout*/
+.logout-btn {
+    background-color: #555;
+    color: white;
+    border: none;
+    padding: 8px 18px;
+    font-size: 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.logout-btn:hover {
+    background-color: #333;
+}
+
+/* ================= MODAL/POP UP LOGIN ================= */
+
+.login-modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+}
+
+.login-modal-content {
+    background: #ffffff;
+    width: 350px;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    position: relative;
+    text-align: center;
+    transition: background 0.4s, color 0.4s;
+}
+
+.close-login {
+    position: absolute;
+    top: 12px;
+    right: 15px;
+    font-size: 22px;
+    cursor: pointer;
+    color: #333;
+    transition: color 0.3s;
+}
+
+.close-login:hover {
+    color: #d32f2f;
+}
+
+#loginForm input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    outline: none;
+    transition: background 0.3s, border-color 0.3s, color 0.3s;
+}
+
+#loginForm input:focus {
+    border-color: #d32f2f; 
+}
+
+.login-submit {
+    width: 100%;
+    background-color: #d32f2f; 
+    color: white;
+    padding: 10px;
+    border: none;
+    margin-top: 15px;
+    cursor: pointer;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.login-submit:hover {
+    background-color: #a12323;
+}
+
+/* ============ HALAMAN INDEX ===============*/
+
+/* ===== Hero Section =====*/
+.hero {
+    height: 100vh;
+    background: url("merapi.jpg") center/cover no-repeat;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+    color: white;
+    padding: 100px;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.45);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 90%;
+}
+
+.text-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+    gap: 40px;
+}
+
+.hero h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+    line-height: 1.2;
+    font-weight: 700;
+}
+
+.hero h1 span {
+    color: #ff4444;
+}
+
+.right-text {
+    font-size: 1.1em;
+    line-height: 1.6;
+    color: #eee;
+}
+
+.btn {
+    background-color: #ff4b4b;
+    color: white;
+    padding: 10px 25px;
+    text-decoration: none;
+    border-radius: 25px;
+    transition: 0.3s;
+    border: none;
+    font-weight: 600;
+    display: inline-block;
+    margin-top: 25px;
+    width: auto;
+}
+
+.btn:hover {
+    background-color: #d32f2f; 
+}
+
+/* ===== Fakta Section ===== */
+.fakta {
+    background-color: #fff;
+    text-align: center;
+    padding: 80px 60px;
+    transition: background-color 0.4s, color 0.4s;
+}
+
+.fakta h2 {
+    color: #222;
+    font-size: 2em;
+    margin-bottom: 40px;
+    transition: color 0.4s;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.card {
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, background-color 0.4s, color 0.4s, box-shadow 0.4s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card img {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+/* ========== HALAMAN ABOUT.HTML=============*/
+.about-sejarah {
+    text-align: center;
+    padding: 60px;
+    background-color: #f9f9f9;
+    color: #222;
+    margin-top: 80px; 
+    transition: background-color 0.4s, color 0.4s;
+}
+
+.about-sejarah .about-image {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 40px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+.about-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 50px;
+    align-items: start;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.about-box, .sejarah-box {
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.4s, color 0.4s;
+    text-align: left;
+}
+
+.about-box:hover, .sejarah-box:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    background-color:#f3f2f2;
+}
+
+.about-box h1, .sejarah-box h1 {
+    font-size: 2em;
+    margin-bottom: 15px;
+    color: #111;
+    transition: color 0.4s;
+}
+
+.about-box h1 span, .sejarah-box h1 span {
+    color: #ff4444;
+}
+
+.about-box p, .sejarah-box p {
+    font-size: 1.05em;
+    line-height: 1.7;
+    color: #333;
+    transition: color 0.4s;
+    text-align: justify;
+}
+
+/*--------Wisata Merapi Section-------*/
+.wisata-merapi {
+    text-align: center;
+    padding: 100px 60px;
+    background-color: #fff;
+    transition: background-color 0.4s, color 0.4s;
+}
+
+.wisata-merapi h1 {
+    font-size: 2.3em;
+    color: #111;
+    margin-bottom: 20px;
+    transition: color 0.4s;
+}
+
+.wisata-merapi h1 span {
+    color: #ff4444;
+    text-align: center;
+}
+
+.wisata-merapi p {
+    font-size: 1.1em;
+    color: #444;
+    margin-bottom: 50px;
+    text-align: center;
+    transition: color 0.4s;
+}
+
+.grid-wisata {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.wisata-card {
+    background-color: rgb(247, 247, 247);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.4s, color 0.4s;
+    text-align: left;
+}
+
+.wisata-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    background-color:#f3f2f2;
+}
+
+.wisata-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.wisata-card h3 {
+    color: #0a0a0a;
+    font-size: 1.3em;
+    margin-bottom: 10px;
+    text-align: center;
+    transition: color 0.4s;
+}
+
+.wisata-card p {
+    font-size: 1em;
+    color: #333;
+    line-height: 1.6;
+    transition: color 0.4s;
+    text-align: center;
+}
+
+/* ===========HALAMAN CONTACT.HTML============= */
+.kontak-section {
+    text-align: center;
+    padding: 120px 20px 80px;
+    background-color: #f5f5f5; /* Light Mode */
+    color: #222;
+    transition: background-color 0.4s, color 0.4s;
+}
+
+.kontak-section h1 {
+    font-size: 2.3em;
+    margin-bottom: 15px;
+}
+
+.kontak-section h1 span {
+    color: #ff4444;
+}
+
+.kontak-section p {
+    max-width: 700px;
+    margin: 0 auto 40px;
+    font-size: 1.05em;
+    line-height: 1.6;
+}
+.contact-card {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #ffffff; 
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); 
+    transition: background-color 0.4s, box-shadow 0.4s;
+    text-align: left; 
+    border: 1px solid #ddd;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    text-align: left;
+}
+
+.contact-form label {
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 1em;
+    resize: none;
+    transition: border-color 0.3s, box-shadow 0.3s, background-color 0.4s, color 0.4s;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: #ff4444;
+    box-shadow: 0 0 5px rgba(255, 68, 68, 0.5);
+    outline: none;
+}
+
+.contact-form button {
+    background-color: #ff4444;
+    color: white;
+    font-weight: 600;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.contact-form button:hover {
+    background-color: #d32f2f; 
+}
+
+/* ================= FOOTER ================= */
+footer {
+    background-color: #86B0BD;
+    color: #fff;
+    text-align: center;
+    padding: 15px 0;
+    transition: background-color 0.4s;
+}
+
+.footer-merapi {
+    background-color: #86B0BD;
+    color: #fff;
+    padding: 60px 80px 30px;
+    font-size: 0.95em;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    transition: background-color 0.4s;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 40px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.footer-column {
+    flex: 1 1 300px;
+}
+
+.footer-column h3 {
+    color: #ff4444;
+    font-size: 1.3em;
+    margin-bottom: 15px;
+}
+
+.footer-column p {
+    line-height: 1.6;
+    color: #fff;
+}
+
+.footer-column a {
+    color: #ff4444;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-column a:hover {
+    color: #c21717;
+}
+
+.footer-merapi .copyright {
+    color: #fff;
+    text-align: center;
+    padding: 15px 0;
+    transition: background-color 0.4s;
+}
+
+
+/* ================= DARK MODE STYLES ================= */
+
+body.dark-mode {
+    background-color: #3b3b3b;
+    color: #eee;
+}
+
+/* ------- Header & Navbar ------ */
+body.dark-mode .header {
+    background-color: #333;
+}
+
+body.dark-mode .navbar a {
+    color: #eee;
+}
+
+body.dark-mode .navbar a:hover,
+body.dark-mode .navbar a.active {
+    color: #ff4444;
+}
+
+/* ---- Action Buttons ----- */
+body.dark-mode .mode-toggle-btn {
+    background-color: #0056b3; 
+    color: white;
+}
+
+body.dark-mode .mode-toggle-btn:hover {
+    background-color: #007bff;
+}
+
+body.dark-mode .login-btn {
+    background-color: #0056b3;
+}
+
+body.dark-mode .login-btn:hover {
+    background-color: #007bff;
+}
+
+body.dark-mode .logout-btn {
+    background-color: #0056b3;
+}
+
+body.dark-mode .logout-btn:hover {
+    background-color: #007bff;
+}
+
+/* ----- Modal/Pop Up Login -----*/
+body.dark-mode .login-modal-content {
+    background: #2a2a2a;
+    color: #eee;
+    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .close-login {
+    color: #eee;
+}
+
+body.dark-mode .close-login:hover {
+    color: #c93b07;
+}
+
+body.dark-mode #loginForm input {
+    background: #3a3a3a;
+    border: 1px solid #555;
+    color: #eee;
+}
+
+body.dark-mode .login-submit {
+    background-color: #f82d12f5;
+}
+
+body.dark-mode .login-submit:hover {
+    background-color: #970b0b;
+}
+
+/* ---- Dark Mode About ----- */
+body.dark-mode .about-sejarah {
+    background-color: #414040; 
+    color: #eee;
+} 
+
+/* ---- Content Sections (Fakta, About, Wisata, Kontak)----- */
+body.dark-mode .fakta,
+body.dark-mode .wisata-merapi {
+    background-color: #1e1e1e;
+    color: #eee;
+}
+
+/* ----- Cards & Boxes ----- */
+body.dark-mode .fakta h2,
+body.dark-mode .wisata-merapi h1 {
+    color: #ff4444;
+}
+
+body.dark-mode .card,
+body.dark-mode .about-box,
+body.dark-mode .sejarah-box,
+body.dark-mode .wisata-card {
+    background-color: #2a2a2a;
+    color: #eee;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.05);
+}
+
+body.dark-mode .about-box h1,
+body.dark-mode .sejarah-box h1,
+body.dark-mode .wisata-card h3 {
+    color: #ff4444;
+}
+
+body.dark-mode .about-box p,
+body.dark-mode .sejarah-box p,
+body.dark-mode .wisata-card p,
+body.dark-mode .wisata-merapi p {
+    color: #ddd;
+}
+
+/*----- Halaman Contact -----*/
+body.dark-mode .kontak-section {
+    background-color: #1e1e1e;
+    color: #eee;
+}
+
+body.dark-mode .contact-card {
+    background-color: #2a2a2a; 
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4), 0 0 0 1px #333; 
+    border: 1px solid #333; 
+}
+
+/* ---- Form Kontak Dark Mode ---- */
+body.dark-mode .contact-form input,
+body.dark-mode .contact-form textarea {
+    background-color: #3a3a3a;
+    border-color: #555;
+    color: #fff;
+}
+
+body.dark-mode .contact-form input:focus,
+body.dark-mode .contact-form textarea:focus {
+    border-color: #ff4444; 
+    box-shadow: 0 0 5px rgba(255, 68, 68, 0.5);
+}
+
+body.dark-mode .contact-form button {
+    background-color: #ff4444;
+}
+
+body.dark-mode .contact-form button:hover {
+    background-color: #b62121;
+}
+
+/*----- Footer Dark Mode --------*/
+body.dark-mode footer {
+    background-color: #353636;
+    color: #fff;
+    text-align: center;
+    padding: 15px 0;
+    transition: background-color 0.4s;
+}
+body.dark-mode .footer-merapi {
+    background-color: #353636;
+}
+
+
+/* ================= RESPONSIVE DESIGN ================= */
+/* Responsive Tablet  */
+@media (max-width: 900px) {
+    .header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-bottom: 5px;
+    }
+    
+    .navbar ul {
+        gap: 15px;
+        justify-content: center;
+        padding-bottom: 5px;
+    }
+
+    .nav-actions {
+        position: absolute;
+        top: 15px;
+        right: 30px;
+        flex-wrap: nowrap;
+        gap: 8px;
+    }
+
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding-bottom: 5px;
+    }
+    
+    .navbar {
+        width: 100%;
+        margin-top: 10px;
+    }
+    
+    .grid-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .about-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .grid-wisata {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .hero {
+        padding: 180px 30px 60px; 
+        text-align: center;
+    }
+
+    .text-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .left-text {
+        text-align: center;
+    }
+
+    .hero h1 {
+        font-size: 2.5em;
+    }
+    
+    .hero h2 {
+        font-size: 30px;
+    }
+
+    .fakta {
+        padding: 60px 30px;
+        padding-top: 140px;
+    }
+
+    .about-sejarah {
+        padding: 80px 30px;
+        padding-top: 140px;
+    }
+    
+    .wisata-merapi {
+        padding: 60px 30px;
+    }
+
+    .footer-merapi {
+        padding: 40px 30px 20px;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        gap: 5px;
+        text-align: center;
+    }
+}
+
+/* Responsive Phone (max-width: 480px) */
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 2em; 
+    }
+
+    .hero-content h2 { 
+        font-size: 1.2em; 
+        margin-top: 10px;
+    }
+    .right-text {
+        font-size: 1em;
+    }
+    .hero {
+        padding: 200px 15px 40px;
+    }
+
+    .btn {
+        margin-top: 15px;
+    }
+
+    .grid-container, .about-container, .grid-wisata {
+        grid-template-columns: 1fr;
+    }
+    
+    .fakta, .about-sejarah, .wisata-merapi {
+        padding-left: 15px;
+        padding-right: 15px;
+        padding-top: 60px;
+    }
+}

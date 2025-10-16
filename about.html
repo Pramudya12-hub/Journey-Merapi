@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tentang Merapi</title> 
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <a href="index.html" class="Logo">Profile<span>GM</span></a>
+        <nav class="navbar">
+            <ul>
+                <li><a href="index.html">Beranda</a></li>
+                <li><a href="about.html" class="active">Tentang Merapi</a></li>
+                <li><a href="contact.html">Kontak</a></li>
+            </ul>
+        </nav>
+        <div class="nav-actions">
+            <span id="userName" style="display: none; margin-right: 10px;"></span> 
+            <button class="login-btn" id="openLogin">Login</button> 
+            <button class="logout-btn" id="logoutBtn" style="display: none;">Logout</button>
+            <button class="mode-toggle-btn" id="darkModeToggle">Dark Mode</button>
+        </div>
+    </header>
+    <section class="about-sejarah">
+        <img src="merapi2.jpg" alt="Gunung Merapi" class="about-image">
+
+        <div class="about-container">
+            <div class="about-box">
+                <h1>About <span>MERAPI</span></h1>
+                <p>
+                    Gunung Merapi merupakan salah satu gunung berapi paling aktif di dunia yang terletak
+                    di perbatasan antara Provinsi Jawa Tengah dan Daerah Istimewa Yogyakarta.
+                    Dengan ketinggian sekitar 2.930 Meter Di Atas Permukaan Laut (MDPL),
+                    Gunung Merapi telah menjadi ikon alam sekaligus simbol budaya bagi masyarakat sekitar.
+                    Keindahan serta keanggunannya menjadikan Merapi sebagai sumber inspirasi sekaligus kewaspadaan.
+                </p>
+            </div>
+
+            <div class="sejarah-box">
+                <h1>Sejarah <span>MERAPI</span></h1>
+                <p>
+                    Gunung Merapi memiliki sejarah letusan panjang yang telah tercatat sejak abad ke-10.
+                    Beberapa letusan besar terjadi pada tahun 1930, 1994, dan 2010.
+                    Letusan tahun 2010 menjadi salah satu yang paling dahsyat, menelan banyak korban
+                    dan menyebabkan perubahan besar pada lanskap di sekitarnya.
+                    Hingga kini, Merapi tetap aktif dan menjadi pusat penelitian vulkanologi Indonesia.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="wisata-merapi">
+        <h1>Destinasi Wisata <span>MERAPI</span></h1>
+        <p>
+            Selain keindahan alamnya, kawasan Gunung Merapi juga menawarkan beragam destinasi wisata menarik
+            yang sarat dengan nilai sejarah dan petualangan.
+        </p>
+
+        <div class="grid-wisata">
+            <div class="wisata-card">
+                <img src="lavatour.jpg" alt="Jeep Lava Tour Merapi">
+                <h3>Jeep Lava Tour Merapi</h3>
+                <p>
+                    Petualangan seru menyusuri jalur bekas letusan Merapi menggunakan jeep off-road.
+                    Cocok untuk pecinta tantangan dan panorama alam ekstrem.
+                </p>
+            </div>
+
+            <div class="wisata-card">
+                <img src="bunker.jpg" alt="Bunker Kaliadem">
+                <h3>Bunker Kaliadem</h3>
+                <p>
+                    Bunker bersejarah yang dulunya digunakan sebagai tempat perlindungan dari awan panas.
+                    Kini menjadi salah satu spot favorit wisatawan dengan pemandangan langsung ke puncak Merapi.
+                </p>
+            </div>
+
+            <div class="wisata-card">
+                <img src="museumsisahartaku.jpg" alt="Museum Sisa Hartaku">
+                <h3>Museum Sisa Hartaku</h3>
+                <p>
+                    Museum yang menyimpan berbagai barang peninggalan warga pasca letusan tahun 2010,
+                    menggambarkan kekuatan alam dan keteguhan masyarakat sekitar.
+                </p>
+            </div>
+
+            <div class="wisata-card">
+                <img src="klangon.jpg" alt="Bukit Klangon">
+                <h3>Bukit Klangon</h3>
+                <p>
+                    Spot terbaik menikmati pemandangan Gunung Merapi dari jarak dekat,
+                    terutama saat matahari terbit dengan udara sejuk khas pegunungan.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <div id="loginModal" class="login-modal">
+        <div class="login-modal-content">
+            <span class="close-login">&times;</span>
+            <h2>Login Pengguna</h2>
+            <form id="loginForm" onsubmit="login(event)">
+                <input type="text" id="email" placeholder="Email" required>
+                <input type="password" id="password" placeholder="Password" required>
+                <button type="submit" class="login-submit">Masuk</button>
+            </form>
+        </div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2025 MerapiWeb. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Fungsi untuk menangani login
+        function login(event) { //fungsi Login
+            event.preventDefault(); //mencegah form submit secara default
+
+            const email = document.getElementById("email").value.trim(); //mengambil email
+            const password = document.getElementById("password").value.trim(); //mengambil password
+
+            if (email === "" || password === "") { //validasi input kosong 
+                alert("Email dan password tidak boleh kosong!");
+                return; 
+            }
+
+            // Validasi sederhana
+            if (email && password ) { //validasi email dan pw 
+                const username = email.split("@")[0]; //mengambil username dari email
+                localStorage.setItem("loggedInUser", username); //menyimpan data user di LocalStorage
+                alert("Login Berhasil!"); 
+                document.getElementById('loginModal').style.display = "none";
+                location.reload();
+            } else {
+                alert("Email atau password salah! Gunakan: user@gmail.com | 12345");
+            }
+        }
+        // fungsi utama yang akan dijalankan saat halaman dimuat 
+        document.addEventListener('DOMContentLoaded', () => { 
+            // Deklarasi Elemen
+            const toggleButton = document.getElementById('darkModeToggle'); //tombol toggle darkmode
+            const body = document.body; //elemen body 
+            const loginModal = document.getElementById('loginModal'); //modal Login
+            const loginBtn = document.getElementById('openLogin'); // tombol buka login
+            const logoutBtn = document.getElementById("logoutBtn"); // tombol logout
+            const userNameSpan = document.getElementById("userName"); // Menggunakan userNameSpan untuk menghindari konflik dengan variabel global di luar DOMContentLoaded
+            const closeLogin = document.querySelector('.close-login'); //untuk menutup modal login
+
+            // --- 1. FITUR DARK MODE ---
+            function applyDarkMode(isDark) { 
+                if (isDark) { 
+                    //jika user memilih dark mode 
+                    body.classList.add('dark-mode');
+                    toggleButton.textContent = 'Light Mode'; //mengganti teks tombol 
+                    localStorage.setItem('darkMode', 'enabled'); //menyimpan preferensi di localStorage
+                } else {
+                    body.classList.remove('dark-mode'); //jika user memilih light mode 
+                    toggleButton.textContent = 'Dark Mode'; //mengganti teks tombol 
+                    localStorage.setItem('darkMode', 'disabled'); //menyimpan preferensi di localstorage 
+                }
+            }
+
+            // Terapkan mode saat memuat halaman
+            const isDarkMode = localStorage.getItem('darkMode') === 'enabled';
+            applyDarkMode(isDarkMode);
+
+            // Listener untuk toggle button
+            toggleButton.addEventListener('click', () => {
+                const isCurrentlyDark = body.classList.contains('dark-mode');
+                applyDarkMode(!isCurrentlyDark);
+            });
+
+            // --- 2. LOGIC LOGIN / LOGOUT DISPLAY ---
+            const loggedInUser = localStorage.getItem("loggedInUser");
+
+            if (loggedInUser) {
+                loginBtn.style.display = "none"; // menyembunyikan tombol Login
+                logoutBtn.style.display = "inline-block"; // menampilkan tombol Logout
+                userNameSpan.style.display = "inline-block"; // menampilkan nama pengguna
+                userNameSpan.textContent = `Halo, ${loggedInUser}`;
+            } else {
+                loginBtn.style.display = "inline-block"; // menampilkan tombol Login
+                logoutBtn.style.display = "none"; // menyembunyikan tombol Logout
+                userNameSpan.style.display = "none"; // menyembunyikan nama pengguna
+            }
+
+            // --- 3. FITUR LOGOUT ---
+            logoutBtn.addEventListener("click", () => { //menambahkan event listener pada tombol Logout
+                localStorage.removeItem("loggedInUser"); //menghapus data user dari localStorage
+                alert("Anda telah logout!"); //menampilkan alert Logout
+                location.reload(); //refresh halaman saat logout
+            });
+
+            // --- 4. MODAL LOGIN ---
+            loginBtn.addEventListener('click', () => { //menambahkan event listener pada tombol Login
+                loginModal.style.display = 'flex'; //menampilkan login modal
+            });
+
+            // Tutup Modal dengan tombol 'x'
+            closeLogin.addEventListener('click', () => {
+                loginModal.style.display = 'none';
+            });
+
+            // Tutup Modal saat klik di luar area modal
+            window.addEventListener('click', (e) => {
+                if (e.target === loginModal) {
+                    loginModal.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

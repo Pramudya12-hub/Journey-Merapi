@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="id">
+<head> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Journey Merapi</title> <!--Judul Page-->
+    <link rel="stylesheet" href="style.css"> <!--Link mengarah ke Style.css-->
+</head>
+<body>
+    <header class="header"> <!--membuat class header-->
+        <a href="about.html" class="Logo">Journey<span>GM</span></a> <!--Logo yang mengarah ke halaman about.html-->
+        <nav class="navbar"> <!--membuat class navbar-->
+            <ul>
+                <li><a href="index.html" class="active">Beranda</a></li> <!--Link Beranda yang mengarah ke halaman index.html-->
+                <li><a href="about.html">Tentang Merapi</a></li> <!--Link Tentang Merapi yang mengarah ke halaman about.html-->
+                <li><a href="contact.html">Kontak</a></li> <!--Link Kontak yang mengarah ke halaman contact.html-->
+            </ul>
+        </nav>
+        <div class="nav-actions"> <!--membuat div navigasi atas (login, logout, darkmode)-->
+            <span id="userName" style="display: none; margin-right: 10px;"></span> <!--Span untuk mengatur navigasi Login--> 
+            <button class="login-btn" id="openLogin">Login</button> <!--membuat button navigasi login-->
+            <button class="logout-btn" id="logoutBtn" style="display: none;">Logout</button> <!--Membuat navigasi logout-->
+            <button class="mode-toggle-btn" id="darkModeToggle">Dark Mode</button> <!--membuat button untuk toggle darkmode-->
+        </div>
+    </header>
+
+    <section class="hero" id="home"> <!--membuat section bernama hero-->
+        <div class="overlay"></div> <!--lapisan transparan agar teks lebih jelas-->
+        <div class="hero-content"> 
+            <div class="text-container">
+                <div class="left-text">
+                    <h1>The Majestic of</h1>
+                    <h1><span>MERAPI</span></h1>
+                </div>
+                <div class="right-text">
+                    <h2>Selamat Datang, temukan keindahan Gunung Merapi di sini!!</h2>
+                    <p>Kami hadir untuk memperkenalkan Gunung Merapi secara mendalam, menyajikan keindahan alamnya serta informasi penting yang berguna bagi calon pengunjung.</p>
+                </div>
+            </div>
+            <a href="about.html" class="btn">About</a>
+        </div>
+    </section>
+
+    <section class="fakta"> <!--membuat section bagian fakta-->
+        <h2>Fakta Menarik Tentang Merapi</h2> 
+        <div class="grid-container"> <!--membuat grid-->
+            <div class="card"> 
+                <img src="upacara.jpg" alt="Upacara Merapi">
+                <h3>Penuh dengan Mitos</h3>
+                <p>Desa-desa dekat Merapi percaya bahwa salah satu istana (dalam keraton Jawa) yang digunakan oleh penguasa kerajaan roh terletak di dalam Merapi.</p>
+            </div>
+
+            <div class="card">
+                <img src="kaliurang.jpg" alt="Kaliurang">
+                <h3>Kawasan Wisata</h3>
+                <p>Kawasan sekitar Merapi seperti Kaliurang menjadi destinasi wisata populer dengan pemandangan indah.</p>
+            </div>
+
+            <div class="card">
+                <img src="museum.jpg" alt="Museum Merapi">
+                <h3>Museum Gunung Merapi</h3>
+                <p>Tempat edukatif untuk mengenal sejarah letusan dan fenomena alam Merapi lebih dekat.</p>
+            </div>
+        </div>
+    </section>
+
+    <div id="loginModal" class="login-modal">
+        <div class="login-modal-content">
+            <span class="close-login">&times;</span> <!--tombol untuk menutup modal-->
+            <h2>Login Pengguna</h2> 
+            <form id="loginForm" onsubmit="login(event)"> <!--form login pengguna-->
+                <input type="text" id="email" placeholder="Email" required> 
+                <input type="password" id="password" placeholder="Password" required>
+                <button type="submit" class="login-submit">Masuk</button> <!--Tombol submit-->
+            </form>
+        </div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2025 MerapiWeb. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Fungsi untuk menangani login
+        function login(event) { //fungsi Login
+            event.preventDefault(); //mencegah form submit secara default
+
+            const email = document.getElementById("email").value.trim(); //mengambil email
+            const password = document.getElementById("password").value.trim(); //mengambil password
+
+            if (email === "" || password === "") { //validasi input kosong 
+                alert("Email dan password tidak boleh kosong!");
+                return; 
+            }
+
+            // Validasi sederhana
+            if (email && password ) { //validasi email dan pw 
+                const username = email.split("@")[0]; //mengambil username dari email
+                localStorage.setItem("loggedInUser", username); //menyimpan data user di LocalStorage
+                alert("Login Berhasil!"); 
+                document.getElementById('loginModal').style.display = "none";
+                location.reload();
+            } else {
+                alert("Email atau password salah! Gunakan: user@gmail.com | 12345");
+            }
+        }
+        // fungsi utama yang akan dijalankan saat halaman dimuat 
+        document.addEventListener('DOMContentLoaded', () => { 
+            // Deklarasi Elemen
+            const toggleButton = document.getElementById('darkModeToggle'); //tombol toggle darkmode
+            const body = document.body; //elemen body 
+            const loginModal = document.getElementById('loginModal'); //modal Login
+            const loginBtn = document.getElementById('openLogin'); // tombol buka login
+            const logoutBtn = document.getElementById("logoutBtn"); // tombol logout
+            const userNameSpan = document.getElementById("userName"); // Menggunakan userNameSpan untuk menghindari konflik dengan variabel global di luar DOMContentLoaded
+            const closeLogin = document.querySelector('.close-login'); //untuk menutup modal login
+
+            // --- 1. FITUR DARK MODE ---
+            function applyDarkMode(isDark) { 
+                if (isDark) { 
+                    //jika user memilih dark mode 
+                    body.classList.add('dark-mode');
+                    toggleButton.textContent = 'Light Mode'; //mengganti teks tombol 
+                    localStorage.setItem('darkMode', 'enabled'); //menyimpan preferensi di localStorage
+                } else {
+                    body.classList.remove('dark-mode'); //jika user memilih light mode 
+                    toggleButton.textContent = 'Dark Mode'; //mengganti teks tombol 
+                    localStorage.setItem('darkMode', 'disabled'); //menyimpan preferensi di localstorage 
+                }
+            }
+
+            // Terapkan mode saat memuat halaman
+            const isDarkMode = localStorage.getItem('darkMode') === 'enabled';
+            applyDarkMode(isDarkMode);
+
+            // Listener untuk toggle button
+            toggleButton.addEventListener('click', () => {
+                const isCurrentlyDark = body.classList.contains('dark-mode');
+                applyDarkMode(!isCurrentlyDark);
+            });
+
+            // --- 2. LOGIC LOGIN / LOGOUT DISPLAY ---
+            const loggedInUser = localStorage.getItem("loggedInUser");
+
+            if (loggedInUser) {
+                loginBtn.style.display = "none"; // menyembunyikan tombol Login
+                logoutBtn.style.display = "inline-block"; // menampilkan tombol Logout
+                userNameSpan.style.display = "inline-block"; // menampilkan nama pengguna
+                userNameSpan.textContent = `Halo, ${loggedInUser}`;
+            } else {
+                loginBtn.style.display = "inline-block"; // menampilkan tombol Login
+                logoutBtn.style.display = "none"; // menyembunyikan tombol Logout
+                userNameSpan.style.display = "none"; // menyembunyikan nama pengguna
+            }
+
+            // --- 3. FITUR LOGOUT ---
+            logoutBtn.addEventListener("click", () => { //menambahkan event listener pada tombol Logout
+                localStorage.removeItem("loggedInUser"); //menghapus data user dari localStorage
+                alert("Anda telah logout!"); //menampilkan alert Logout
+                location.reload(); //refresh halaman saat logout
+            });
+
+            // --- 4. MODAL LOGIN ---
+            loginBtn.addEventListener('click', () => { //menambahkan event listener pada tombol Login
+                loginModal.style.display = 'flex'; //menampilkan login modal
+            });
+
+            // Tutup Modal dengan tombol 'x'
+            closeLogin.addEventListener('click', () => {
+                loginModal.style.display = 'none';
+            });
+
+            // Tutup Modal saat klik di luar area modal
+            window.addEventListener('click', (e) => {
+                if (e.target === loginModal) {
+                    loginModal.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
